@@ -257,6 +257,7 @@ class RNUnifiedContactsModule extends ReactContextBaseJavaModule {
 
                     if ( resultCode == 0 ) return;
 
+try {
                     Uri contactUri = data.getData();
 
                     contentResolver = activity.getContentResolver();
@@ -270,6 +271,8 @@ class RNUnifiedContactsModule extends ReactContextBaseJavaModule {
                     WritableMap contact = getContactDetailsFromContactId( contactId );
 
                     selectContactCallback.invoke( null, contact );
+} catch(NullPointerException e) {
+}
 
                     break;
             }
